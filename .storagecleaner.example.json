@@ -1,0 +1,21 @@
+{
+  "searchPaths": [
+    "~",
+    "~/projects",
+    "~/Documents"
+  ],
+  "excludePaths": [
+    "**/Library/**",
+    "**/System/**",
+    "**/.Trash/**",
+    "**/important-project/**"
+  ],
+  "maxDepth": 5,
+  "olderThanDays": 30,
+  "minSize": 10485760,
+  "autoClean": {
+    "enabled": false,
+    "types": ["cache", "build"],
+    "schedule": "weekly"
+  }
+}

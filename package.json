@@ -1,0 +1,68 @@
+{
+  "name": "@personnn/storagecleaner",
+  "version": "1.1.0",
+  "description": "🧹 The ultimate Mac storage cleaner - removes node_modules, caches, build artifacts, IDE caches and more",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "storagecleaner": "./bin/storagecleaner",
+    "sc": "./bin/storagecleaner"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "version": "npm run build",
+    "postinstall": "echo '\\n🧹 Thanks for installing @personnn/storagecleaner!\\n\\nRun: storagecleaner interactive\\nDocs: https://registry.personnn.com/-/web/detail/@personnn/storagecleaner\\n'"
+  },
+  "keywords": [
+    "storage",
+    "cleaner",
+    "node_modules",
+    "cache",
+    "mac",
+    "cleanup",
+    "disk-space",
+    "cursor",
+    "windsurf",
+    "kiro",
+    "ide",
+    "apple-media-analysis"
+  ],
+  "author": "personnn",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/personnn/personnn-storagecleaner"
+  },
+  "homepage": "https://github.com/personnn/personnn-storagecleaner#readme",
+  "bugs": {
+    "url": "https://github.com/personnn/personnn-storagecleaner/issues"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "ora": "^8.0.1",
+    "pretty-bytes": "^6.1.1",
+    "fast-glob": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.10.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
