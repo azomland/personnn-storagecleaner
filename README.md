@@ -9,6 +9,7 @@ The ultimate Mac storage cleaner - removes node_modules, caches, build artifacts
 - 🌐 **Browser Caches**: Remove Chrome, Safari, Firefox, Brave, Edge, and Arc caches
 - 🏗️ **Build Artifacts**: Clean dist, build, .next, .turbo, and other build folders
 - 🤖 **IDE Caches**: Clean Cursor, Windsurf, Kiro, n8n, and Apple Media Analysis bloat
+- 🦞 **OpenClaw Traces**: Find and remove OpenClaw data, config, and startup launch agents
 - 🎯 **Interactive Mode**: Select exactly what you want to clean
 - � **Size E:stimation**: See exactly how much space you'll recover
 - 🔒 **Safe**: Confirmation prompts and dry-run mode
@@ -56,6 +57,7 @@ storagecleaner scan --type cache
 storagecleaner scan --type browser
 storagecleaner scan --type build
 storagecleaner scan --type ide
+storagecleaner scan --type openclaw
 
 # Scan with filters
 storagecleaner scan --days 30          # Only items older than 30 days
@@ -122,12 +124,19 @@ storagecleaner clean --force
 - **n8n**: `~/.n8n`
 - **Apple Media Analysis**: `~/Library/Containers/com.apple.mediaanalysisd` (safe to delete!)
 
+### OpenClaw Traces (🦞)
+- **Data**: `~/.openclaw`
+- **Config**: `~/.config/openclaw`
+- **Local Share**: `~/.local/share/openclaw`
+- **Startup File**: `~/Library/LaunchAgents/ai.openclaw.gateway.plist` (removes background auto-start)
+- **Processes**: Automatically detects and terminates running OpenClaw gateway instances via `pkill`
+
 ## 🔧 Options
 
 ### Common Options
 
 - `-p, --path <path>`: Directory to scan (default: `~`)
-- `-t, --type <type>`: What to scan/clean (`all`, `node_modules`, `cache`, `browser`, `build`, `ide`)
+- `-t, --type <type>`: What to scan/clean (`all`, `node_modules`, `cache`, `browser`, `build`, `ide`, `openclaw`)
 - `-d, --days <days>`: Only items older than N days
 - `-s, --min-size <size>`: Minimum size in MB (scan only)
 - `--max-depth <depth>`: Maximum search depth (default: 5)
@@ -158,6 +167,9 @@ storagecleaner interactive  # Then select the large items
 
 # Clean specific directory
 storagecleaner clean --path ~/projects --type build
+
+# Stop and remove OpenClaw traces (including launch agents)
+storagecleaner clean --type openclaw --force
 ```
 
 ## 🛡️ Safety Features
