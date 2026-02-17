@@ -3,7 +3,7 @@ import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
-const execAsync = promisify(exec);
+export const execAsync = promisify(exec);
 
 export async function getDirectorySize(dirPath: string): Promise<number> {
   try {

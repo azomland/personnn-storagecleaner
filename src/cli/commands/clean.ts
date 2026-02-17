@@ -44,6 +44,9 @@ export async function cleanCommand(options: CleanOptions) {
       case 'ide':
         summary = await scanner.scanIdes();
         break;
+      case 'openclaw':
+        summary = await scanner.scanOpenClaw();
+        break;
       default:
         summary = await scanner.scanAll();
     }

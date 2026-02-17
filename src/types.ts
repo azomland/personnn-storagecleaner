@@ -1,5 +1,5 @@
 export interface ScanResult {
-  type: 'node_modules' | 'cache' | 'browser' | 'build' | 'ide';
+  type: 'node_modules' | 'cache' | 'browser' | 'build' | 'ide' | 'openclaw';
   path: string;
   size: number;
   lastModified: Date;

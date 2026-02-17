@@ -3,6 +3,8 @@ import { CacheScanner } from './cache-scanner.js';
 import { BrowserScanner } from './browser-scanner.js';
 import { BuildScanner } from './build-scanner.js';
 import { IdeScanner } from './ide-scanner.js';
+import { OpenClawScanner } from './openclaw-scanner.js';
+
 import { ScanResult, ScannerOptions, Summary } from '../types.js';
 
 export class StorageScanner {
@@ -18,7 +20,8 @@ export class StorageScanner {
       new CacheScanner(this.options),
       new BrowserScanner(this.options),
       new BuildScanner(this.options),
-      new IdeScanner(this.options)
+      new IdeScanner(this.options),
+      new OpenClawScanner(this.options)
     ];
 
     const allResults: ScanResult[] = [];
@@ -96,6 +99,18 @@ export class StorageScanner {
       items
     };
   }
+
+  async scanOpenClaw(): Promise<Summary> {
+    const scanner = new OpenClawScanner(this.options);
+    const items = await scanner.scan();
+    const totalSize = items.reduce((sum, item) => sum + item.size, 0);
+
+    return {
+      totalFound: items.length,
+      totalSize,
+      items
+    };
+  }
 }
 
 export * from './node-modules-scanner.js';
@@ -103,3 +118,5 @@ export * from './cache-scanner.js';
 export * from './browser-scanner.js';
 export * from './build-scanner.js';
 export * from './ide-scanner.js';
+export * from './openclaw-scanner.js';
+

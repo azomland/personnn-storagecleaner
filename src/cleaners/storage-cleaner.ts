@@ -19,7 +19,13 @@ export class StorageCleaner {
 
     for (const item of itemsToClean) {
       try {
-        await deleteDirectory(item.path);
+        if (item.path.startsWith('PROCESS:')) {
+          const processName = item.path.split(':')[1];
+          const { execAsync } = await import('../utils/file-utils.js');
+          await execAsync(`pkill -f "${processName}"`);
+        } else {
+          await deleteDirectory(item.path);
+        }
         results.push({
           path: item.path,
           size: item.size,

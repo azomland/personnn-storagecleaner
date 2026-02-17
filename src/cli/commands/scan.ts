@@ -46,8 +46,12 @@ export async function scanCommand(options: ScanOptions) {
         summary = await scanner.scanBuilds();
         break;
       case 'ide':
-        spinner.text = 'Scanning IDE caches (Cursor, Windsurf, Kiro, n8n, Apple Media Analysis)...';
+        spinner.text = 'Scanning IDE caches...';
         summary = await scanner.scanIdes();
+        break;
+      case 'openclaw':
+        spinner.text = 'Scanning OpenClaw traces...';
+        summary = await scanner.scanOpenClaw();
         break;
       default:
         spinner.text = 'Scanning all...';
@@ -118,7 +122,8 @@ function getTypeEmoji(type: string): string {
     cache: '🗄️',
     browser: '🌐',
     build: '🏗️',
-    ide: '🤖'
+    ide: '🤖',
+    openclaw: '🦞'
   };
   return emojis[type] || '📁';
 }

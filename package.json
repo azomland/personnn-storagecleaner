@@ -42,11 +42,11 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/personnn/personnn-storagecleaner"
+    "url": "https://github.com/azomland/personnn-storagecleaner"
   },
-  "homepage": "https://github.com/personnn/personnn-storagecleaner#readme",
+  "homepage": "https://github.com/azomland/personnn-storagecleaner#readme",
   "bugs": {
-    "url": "https://github.com/personnn/personnn-storagecleaner/issues"
+    "url": "https://github.com/azomland/personnn-storagecleaner/issues"
   },
   "dependencies": {
     "chalk": "^5.3.0",
